@@ -1,0 +1,13 @@
+use tienda;
+show tables;
+describe empleado;
+select nombre from empleado;
+select nombre, apellido_paterno from empleado;
+SELECT * FROM empleado where apellido_paterno= "Risom" ;
+Select nombre from empleado where id_puesto=4;
+describe puesto;
+SELECT * from puesto where salario>10000;
+describe articulo;
+SELECT * from articulo where precio>1000 and iva>100;
+DESCRIBE venta;
+SELECT * FROM venta where id_articulo in (135,963) and id_empleado in(835,369);
