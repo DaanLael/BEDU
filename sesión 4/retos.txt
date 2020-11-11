@@ -1,0 +1,36 @@
+RETO 1
+
+1.- {date:1, name:1, text:1}
+
+2.- {title:1, cast:1, year:1}
+
+3.- {name:1, password:1}
+
+RETO 2
+
+1.- {name: "Greg Powell"}
+
+2.- {$or: [{name: "Greg Powell"}, {name: "Mercedes Tyler"}]}
+
+3.-
+PROJECT
+{
+ num_mflix_comments: 1
+}
+SORT
+{
+ num_mflix_comments: -1
+}
+LIMIT
+1
+4.- 
+PROJECT
+{
+ title: 1
+}
+SORT
+{
+ num_mflix_comments: -1
+}
+LIMIT
+5
