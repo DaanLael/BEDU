@@ -1,0 +1,24 @@
+Reto 1
+
+1. -{house_rules: /No Parties/i}
+2. - {house_rules: /Pets Allowed/i}
+3. - {house_rules: /No Smoking/i}	
+4. - {house_rules: /No Smoking|No Parties/i}
+
+Reto 2 
+
+1. -{number_of_reviews: {$gte: 50}, "review_scores.review_scores_rating": {$gte: 80}, amenities: {$in: [/Ethernet/]}, "address.country_code": "BR" }
+
+Reto 3
+1.- $match
+{
+   amenities: {$in: ["Wifi", "Ethernet"]}
+}
+
+2.- $group
+{
+   _id: null,
+   total: {
+      $sum: 1
+   }
+}
