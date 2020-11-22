@@ -1,0 +1,70 @@
+RETO 1
+
+1.-Usamos $match
+
+{
+   property_type: 'House',
+   bedrooms: {$gte: 1}
+}
+
+Luego $addFields
+
+{
+   costo_recamara: {$divide: ["$price", "$bedrooms"]}
+}
+
+Luego $group.
+
+{
+  _id: "$address.country",
+  recamaras: {
+    $sum: 1
+  },
+  total: {
+    $sum: "$costo_recamara"
+  }
+}
+
+Agregamos el campo costo promedio para cada país con $addFields.
+
+{
+  pais: "$_id",
+  costo_promedio: {$divide: ["$total", "$recamaras"]}
+}
+
+Y por último,usamos $project.
+
+{
+  _id:0,
+  pais:1,
+  costo_promedio:1
+}
+
+RETO 2
+
+ $lookup.
+
+{
+  from: 'users',
+  localField: 'name',
+  foreignField: 'name',
+  as: 'usuario'
+}
+
+$addFields
+{
+  usuario_objeto: {$arrayElemAt: ["$usuario", 0]}
+}
+
+$addFields
+{
+  usuario_password: "$usuario_objeto.password"
+}
+
+$project
+{
+  _id:0,
+  name:1,
+  email:1,
+  usuario_password:1
+}
